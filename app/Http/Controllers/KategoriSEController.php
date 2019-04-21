@@ -27,34 +27,37 @@ class KategoriSEController extends Controller
             if ($kategori_se->count() > 0) {
                 $parameter      = $kategori_se;
             }
-            $data['kategori_se']= $kategori_se;
+            $total = 0;
+            $skor['A'] = 5;
+            $skor['B'] = 2;
+            $skor['C'] = 1;
+            $ketergantungan_tik = config('indeks-kami.ketergantungan_tik');
+            foreach ($kategori_se as $key => $value) {
+                if (isset($skor[$value->skor])) {
+                    $total += intval($skor[$value->skor]);
+                }
+            }
+            $klasifikasi = '';
+            
+            foreach ($ketergantungan_tik as $key => $value) {
+                if ($key == 'A' && ($total >= $value['bawah'] && $total <= $value['atas'] )) {
+                    $klasifikasi = $value['klasifikasi'];
+                }
+                if ($key == 'B' && ($total >= $value['bawah'] && $total <= $value['atas'] )) {
+                    $klasifikasi = $value['klasifikasi'];
+                }
+                if ($key == 'C' && ($total >= $value['bawah'] && $total <= $value['atas'] )) {
+                    $klasifikasi = $value['klasifikasi'];
+                }
+            }
+            
+            $data['klasifikasi'] = $klasifikasi;
+            $data['kategori_se'] = $kategori_se;
         }
         $data['parameter']  = $parameter;
         $data['responden']  = $responden;
         return view('kategori-se.index',$data);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
     /**
      * Display the specified resource.
      *
@@ -109,12 +112,11 @@ class KategoriSEController extends Controller
         }else{
             $x = 0;
             foreach ($kategoriSE as $key => $value) {
-                if (is_null($value->skor)) {
                     $kategoriSE_update = KategoriSE::find($value->id);
-                    $kategoriSE_update->skor = (isset($request->skor[$x]))? $request->skor[$x] : null;
+                    if (isset($request->skor[$x]) && !is_null($request->skor[$x])) {
+                        $kategoriSE_update->skor = $request->skor[$x];
+                    }
                     $kategoriSE_update->update(); 
-                }
-                
                 $x++;
             }
         }

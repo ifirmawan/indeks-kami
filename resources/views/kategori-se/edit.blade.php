@@ -22,8 +22,7 @@
     </div>
     <div class="col-lg-4">
         <div class="text-right">
-            <label>Tingkat Ketergantungan</label>
-            <h1>Tinggi</h1>
+            
         </div>
     </div>
 </div>
@@ -41,7 +40,9 @@
                     <div class="card-header d-flex">
                         <h4 class="card-header-title">Karakteristik Instansi</h4>
                         <div class="toolbar ml-auto">
-
+                            <a href="{{ route('kategori-se.index') }}" class="btn btn-default">
+                                Kembali
+                            </a>
                         </div>
                     </div>
                     @if(isset($parameter))

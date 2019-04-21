@@ -28,3 +28,5 @@ Route::resource('responden', 'RespondenController')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/json-radar', 'HomeController@getJsonRadar')->name('json-radar');
+Route::get('tata-kelola-status', 'TataKelolaController@status')->name('tata-kelola.status')->middleware('auth');

@@ -314,31 +314,31 @@ class ParameterSeeder extends Seeder
                 'parameter'=> 'Apakah seluruh kebijakan dan prosedur keamanan informasi dievaluasi kelayakannya secara berkala?'
                 ],
                 [
-                'bagian'=>  'IV','kategori_kontrol'=>'3',
+                'bagian'=>  'IV','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah organisasi anda mempunyai strategi penerapan keamanan informasi sesuai hasil analisa risiko yang penerapannya dilakukan sebagai bagian dari rencana kerja organisasi? '
                 ],
                 [
-                'bagian'=>  'IV','kategori_kontrol'=>'3',
+                'bagian'=>  'IV','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah organisasi anda mempunyai strategi penggunaan teknologi keamanan informasi yang penerapan dan pemutakhirannya disesuaikan dengan kebutuhan dan perubahan profil risiko? '
                 ],
                 [
-                'bagian'=>  'IV','kategori_kontrol'=>'3',
+                'bagian'=>  'IV','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah strategi penerapan keamanan informasi direalisasikan sebagai bagian dari pelaksanaan program kerja organisasi anda? '
                 ],
                 [
-                'bagian'=>  'IV','kategori_kontrol'=>'3',
+                'bagian'=>  'IV','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah organisasi anda memiliki dan melaksanakan program audit internal yang dilakukan oleh pihak independen dengan cakupan keseluruhan aset informasi, kebijakan dan prosedur keamanan yang ada (atau sesuai dengan standar yang berlaku)?'
                 ],
                 [
-                'bagian'=>  'IV','kategori_kontrol'=>'3',
+                'bagian'=>  'IV','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah audit internal tersebut mengevaluasi tingkat kepatuhan, konsistensi dan efektifitas penerapan keamanan informasi?'
                 ],
                 [
-                'bagian'=>  'IV','kategori_kontrol'=>'3',
+                'bagian'=>  'IV','kategori_kontrol'=>'2',
                 'parameter'=> 'Apakah hasil audit internal tersebut dikaji/dievaluasi untuk mengidentifikasi langkah pembenahan dan pencegahan, ataupun inisiatif peningkatan kinerja keamanan informasi?'
                 ],
                 [
-                'bagian'=>  'IV','kategori_kontrol'=>'3',
+                'bagian'=>  'IV','kategori_kontrol'=>'2',
                 'parameter'=> 'Apakah hasil audit internal dilaporkan kepada pimpinan organisasi untuk menetapkan langkah perbaikan atau program peningkatan kinerja keamanan informasi?'
                 ],
                 [
@@ -462,43 +462,43 @@ class ParameterSeeder extends Seeder
                 'parameter'=> 'Apakah tersedia prosedur penggunaan perangkat pengolah informasi milik pihak ketiga (termasuk perangkat milik pribadi dan mitra kerja/vendor) dengan memastikan aspek HAKI dan pengamanan akses yang digunakan?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah sudah diterapkan pengamanan fasilitas fisik (lokasi kerja) yang sesuai dengan kepentingan/klasifikasi aset informasi, secara berlapis dan dapat mencegah upaya akses oleh pihak yang tidak berwenang?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah tersedia proses untuk mengelola alokasi kunci masuk (fisik dan elektronik) ke fasilitas fisik?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah infrastruktur komputasi terlindungi dari dampak lingkungan'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah infrastruktur komputasi yang terpasang terlindungi dari gangguan pasokan listrik atau dampak dari petir?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah tersedia peraturan pengamanan perangkat komputasi milik Instansi anda apabila digunakan di luar lokasi kerja resmi (kantor)?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'1',
                 'parameter'=> 'Apakah tersedia proses untuk memindahkan aset TIK (piranti lunak, perangkat keras, data/informasi dll) dari lokasi yang sudah ditetapkan (dalam daftar inventaris)'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'2',
                 'parameter'=> 'Apakah konstruksi ruang penyimpanan perangkat pengolah informasi penting menggunakan rancangan dan material yang dapat menanggulangi risiko kebakaran dan dilengkapi dengan fasilitas pendukung (deteksi kebakaran/asap, pemadam api, pengatur suhu dan kelembaban) yang sesuai?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'2',
                 'parameter'=> 'Apakah tersedia proses untuk memeriksa (inspeksi) dan merawat: perangkat komputer, fasilitas pendukungnya dan kelayakan keamanan lokasi kerja untuk menempatkan aset informasi penting?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'2',
                 'parameter'=> 'Apakah tersedia mekanisme pengamanan dalam pengiriman aset informasi (perangkat dan dokumen) yang melibatkan pihak ketiga?'
                 ],
                 [
-                'bagian'=>  'V','kategori_kontrol'=>'3',
+                'bagian'=>  'V','kategori_kontrol'=>'2',
                 'parameter'=> 'Apakah tersedia peraturan untuk mengamankan lokasi kerja penting (ruang server, ruang arsip) dari risiko perangkat atau bahan yang dapat membahayakan aset informasi (termasuk fasilitas pengolah informasi) yang ada di dalamnya? (misal larangan penggunaan telpon genggam di dalam ruang server, menggunakan kamera dll)'
                 ],
                 [

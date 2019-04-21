@@ -16,7 +16,7 @@
     <div class="col-lg-4">
         <div class="text-right">
             <label>Tingkat Ketergantungan</label>
-            <h1>Tinggi</h1>
+            <h1>{{ (isset($klasifikasi))? $klasifikasi : '' }}</h1>
         </div>
     </div>
 </div>
@@ -37,7 +37,7 @@
                             <i class="fas fa-pencil-alt"></i>&nbsp;
                             Edit
                         </a>
-                        @endif 
+                        @endif
                     </div>
                 </div>
                 

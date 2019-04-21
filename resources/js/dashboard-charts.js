@@ -4,9 +4,9 @@ var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'radar',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Tata Kelola", "Pengolahan Risiko", "Kerangka Kerja", "Pengelolaan Aset", "Aspek Teknologi"],
         datasets: [{
-            label: '# of Votes',
+            label: 'Grafik Jaring Indeks KAMI',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
