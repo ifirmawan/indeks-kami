@@ -79,81 +79,84 @@ return [
             'klasifikasi'=>'Strategis'    
         ]
     ],
-    'f44336' => [
-        [
-            'bawah'=> 0,
-            'atas'=> 174,
-            'klasifikasi'=>'Tidak Layak'    
+    'evaluasi_all' => [
+        'Rendah' => [
+            [
+                'bawah'=> 0,
+                'atas'=> 174,
+                'klasifikasi'=>'Tidak Layak'    
+            ],
+            [
+                'bawah'=> 175,
+                'atas'=> 312,
+                'klasifikasi'=>'Perlu Perbaikan'    
+            ],
+            [
+                'bawah'=> 313,
+                'atas'=> 535,
+                'klasifikasi'=>'Cukup'    
+            ],
+            [
+                'bawah'=> 536,
+                'atas'=> 645,
+                'klasifikasi'=>'Baik'    
+            ]
         ],
-        [
-            'bawah'=> 175,
-            'atas'=> 312,
-            'klasifikasi'=>'Perlu Perbaikan'    
+        'Tinggi' => [
+            [
+                'bawah'=> 0,
+                'atas'=> 272,
+                'klasifikasi'=>'Tidak Layak'    
+            ],
+            [
+                'bawah'=> 273,
+                'atas'=> 455,
+                'klasifikasi'=>'Perlu Perbaikan'    
+            ],
+            [
+                'bawah'=> 456,
+                'atas'=> 583,
+                'klasifikasi'=>'Cukup'    
+            ],
+            [
+                'bawah'=> 584,
+                'atas'=> 645,
+                'klasifikasi'=>'Baik'    
+            ]
         ],
-        [
-            'bawah'=> 313,
-            'atas'=> 535,
-            'klasifikasi'=>'Cukup'    
-        ],
-        [
-            'bawah'=> 536,
-            'atas'=> 645,
-            'klasifikasi'=>'Baik'    
+        'Strategis' => [
+            [
+                'bawah'=> 0,
+                'atas'=> 333,
+                'klasifikasi'=>'Tidak Layak'    
+            ],
+            [
+                'bawah'=> 334,
+                'atas'=> 535,
+                'klasifikasi'=>'Perlu Perbaikan'    
+            ],
+            [
+                'bawah'=> 536,
+                'atas'=> 609,
+                'klasifikasi'=>'Cukup'    
+            ],
+            [
+                'bawah'=> 610,
+                'atas'=> 645,
+                'klasifikasi'=>'Baik'    
+            ]
         ]
     ],
-    'ffeb3b' => [
-        [
-            'bawah'=> 0,
-            'atas'=> 272,
-            'klasifikasi'=>'Tidak Layak'    
-        ],
-        [
-            'bawah'=> 273,
-            'atas'=> 455,
-            'klasifikasi'=>'Perlu Perbaikan'    
-        ],
-        [
-            'bawah'=> 456,
-            'atas'=> 583,
-            'klasifikasi'=>'Cukup'    
-        ],
-        [
-            'bawah'=> 584,
-            'atas'=> 645,
-            'klasifikasi'=>'Baik'    
-        ]
+    'kematangan' => [
+        'I' => 1,
+        'I+' => 2,
+        'II' => 3,
+        'II+' => 4,
+        'III' => 5,
+        'III+' => 6,
+        'IV' => 7,
+        'IV+' => 8,
+        'V' => 9
     ],
-    '8bc34a' => [
-        [
-            'bawah'=> 0,
-            'atas'=> 333,
-            'klasifikasi'=>'Tidak Layak'    
-        ],
-        [
-            'bawah'=> 334,
-            'atas'=> 535,
-            'klasifikasi'=>'Perlu Perbaikan'    
-        ],
-        [
-            'bawah'=> 536,
-            'atas'=> 609,
-            'klasifikasi'=>'Cukup'    
-        ],
-        [
-            'bawah'=> 610,
-            'atas'=> 645,
-            'klasifikasi'=>'Baik'    
-        ]
-        ],
-        'kematangan' => [
-            'I' => 1,
-            'I+' => 2,
-            'II' => 3,
-            'II+' => 4,
-            'III' => 5,
-            'III+' => 6,
-            'IV' => 7,
-            'IV+' => 8,
-            'V' => 9
-        ]
+    'batas_valid' => [ 16,20, 24, 24, 14]
 ];

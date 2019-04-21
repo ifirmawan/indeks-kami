@@ -42,6 +42,7 @@ $current_route = \Request::route()->getName();
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
+                        <!--
                         <li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
                                 <input class="form-control" type="text" placeholder="Search..">
@@ -112,7 +113,7 @@ $current_route = \Request::route()->getName();
                                 </li>
                             </ul>
                         </li>
-
+                    -->
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
@@ -121,12 +122,13 @@ $current_route = \Request::route()->getName();
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                                 aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
-                                    <span class="status"></span><span class="ml-2">Available</span>
+                                    <h5 class="mb-0 text-white nav-user-name">
+                                        {{ ucwords(Auth::user()->name) }}
+                                    </h5>   
                                 </div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                <a class="dropdown-item" href="{{ route('responden.index') }}"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                         class="fas fa-power-off mr-2"></i>Logout</a>
 
 
@@ -159,12 +161,6 @@ $current_route = \Request::route()->getName();
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/home') }}"><i class="fas fa-fw fa-home"></i>
                                     Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ ($current_route == 'responden.index')? 'active' : '' }}"
-                                    href="{{ route('responden.index') }}"><i class="fas fa-fw fa-user-circle"></i>
-                                    ID Responden
                                 </a>
                             </li>
                             <li class="nav-divider">
@@ -210,12 +206,15 @@ $current_route = \Request::route()->getName();
                                 Pengantar
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/tentang-kami') }}"><i class="fas fa-fw fa-info"></i>
+                                <a class="nav-link  {{ ($current_route == 'tentang-kami')? 'active' : '' }}" 
+                                href="{{ route('tentang-kami') }}"><i class="fas fa-fw fa-info"></i>
                                     Tentang KAMI
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-fw fa-bookmark"></i>
+                                <a class="nav-link {{ ($current_route == 'petunjuk-kami')? 'active' : '' }}"
+                                 href="{{ route('petunjuk-kami') }}"><i
+                                        class="fas fa-fw fa-bookmark"></i>
                                     Petunjuk Penggunaan
                                 </a>
                             </li>

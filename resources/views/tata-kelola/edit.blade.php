@@ -62,7 +62,7 @@
                             </li>
                         </ul>
                         <div class="toolbar ml-auto">
-                            <a href="{{ route('tata-kelola.status') }}" class="btn btn-outline-danger">
+                            <a href="{{ route('tata-kelola.index') }}" class="btn btn-outline-danger">
                                 Batal
                             </a>
                         </div>

@@ -40,7 +40,16 @@
 <!-- ============================================================== -->
 <!-- pageheader  -->
 <!-- ============================================================== -->
-<h2>Hasil Evaluasi</h2>
+<div class="row">
+    <div class="col">
+        <h3>Hasil Evaluasi</h3>
+    </div>
+    <div class="col">
+        <div class="text-right">
+            <h2>{{ ucwords($hasil_evaluasi_all) }}</h2>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-4">
         <b>
@@ -70,31 +79,31 @@
             <li class=" list-group-item">
                 <strong>Skor Kategori SE</strong>
                 <span class="float-right">
-                {{ $skor_kategori_se }}
+                    {{ $skor_kategori_se }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Tata Kelola</strong>
                 <span class="float-right">
-                {{ $skor_tata_kelola }}
+                    {{ $skor_tata_kelola }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Pengelolaan Risiko</strong>
                 <span class="float-right">
-                {{ $skor_risiko }}
+                    {{ $skor_risiko }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Kerangka Kerja Keamanan Informasi</strong>
                 <span class="float-right">
-                {{ $skor_kerangka_kerja }}
+                    {{ $skor_kerangka_kerja }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Pengelolaan Aset</strong>
                 <span class="float-right">
-                {{ $skor_pengelolaan_aset }}
+                    {{ $skor_pengelolaan_aset }}
                 </span>
             </li>
             <li class=" list-group-item">
@@ -102,6 +111,12 @@
                 <span class="float-right">
                     {{ $skor_teknologi }}
                 </span>
+            </li>
+            <li class="card-footer list-group-item">
+                    <strong>Total Skor</strong>
+                <div class="float-right">
+                    {{ $total }}
+                </div>
             </li>
         </ul>
     </div>
