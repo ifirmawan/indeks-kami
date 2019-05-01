@@ -46,7 +46,7 @@
     </div>
     <div class="col">
         <div class="text-right">
-            <h2>{{ ucwords($hasil_evaluasi_all) }}</h2>
+            <h2>{{ (isset($hasil_evaluasi_all))? ucwords($hasil_evaluasi_all) : '' }}</h2>
         </div>
     </div>
 </div>
@@ -79,43 +79,43 @@
             <li class=" list-group-item">
                 <strong>Skor Kategori SE</strong>
                 <span class="float-right">
-                    {{ $skor_kategori_se }}
+                    {{ (isset($skor_kategori_se))? $skor_kategori_se : '' }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Tata Kelola</strong>
                 <span class="float-right">
-                    {{ $skor_tata_kelola }}
+                    {{ (isset($skor_tata_kelola))? $skor_tata_kelola : '' }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Pengelolaan Risiko</strong>
                 <span class="float-right">
-                    {{ $skor_risiko }}
+                    {{ (isset($skor_risiko))? $skor_risiko : '' }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Kerangka Kerja Keamanan Informasi</strong>
                 <span class="float-right">
-                    {{ $skor_kerangka_kerja }}
+                    {{ (isset($skor_kerangka_kerja))? $skor_kerangka_kerja : '' }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Pengelolaan Aset</strong>
                 <span class="float-right">
-                    {{ $skor_pengelolaan_aset }}
+                    {{ (isset($skor_pengelolaan_aset))? $skor_pengelolaan_aset : '' }}
                 </span>
             </li>
             <li class=" list-group-item">
                 <strong>Teknologi dan Keamanan Informasi</strong>
                 <span class="float-right">
-                    {{ $skor_teknologi }}
+                    {{ (isset($skor_teknologi))? $skor_teknologi : '' }}
                 </span>
             </li>
             <li class="card-footer list-group-item">
                     <strong>Total Skor</strong>
                 <div class="float-right">
-                    {{ $total }}
+                    {{ (isset($total))? $total : '' }}
                 </div>
             </li>
         </ul>

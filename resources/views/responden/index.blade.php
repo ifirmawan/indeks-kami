@@ -14,7 +14,7 @@
 				<div class="page-breadcrumb float-left">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb ">
-							<li class="breadcrumb-item"><a href="{{ url('/') }}" class="breadcrumb-link">Dashboard</a>
+							<li class="breadcrumb-item"><a href="{{ url('/home') }}" class="breadcrumb-link">Dashboard</a>
 							</li>
 							<li class="breadcrumb-item active" aria-current="page">Identitas Responden</li>
 						</ol>
