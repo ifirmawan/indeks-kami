@@ -100,47 +100,6 @@
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-xl-4">
-
-					</div>
-					<div class="col-xl-6">
-						<div class="text-right">
-							<div class="input-group input-group-sm mb-3">
-								<div class="input-group-prepend"><span class="input-group-text">Tanggal
-										Pengisian</span>
-								</div>
-								<input type="date" class="form-control">
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-2">
-						<div class="text-right">
-							<a href="#" class="btn btn-sm btn-primary"><i class="fas fa-save"></i> Simpan</a>
-						</div>
-					</div>
-				</div>
-				<h3 class="card-title">Deskripsi Ruang Lingkup</h3>
-				<p class="card-text">Isi dengan deskripsi ruang lingkup instansi (satuan kerja) dan infrastruktur
-					TIK.</p>
-				<textarea class="form-control"></textarea>
-
-			</div>
-
-			<!---<div class="card-header">
-				<h4 class="card-title">Senin, 25 Februari 2019</h4>
-				<p class="card-text">Isi dengan deskripsi ruang lingkup instansi (satuan kerja) dan infrastruktur
-					TIK.</p>
-			</div>-->
-		</div>
-
-	</div>
-</div>
 
 
 @endsection
