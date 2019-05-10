@@ -12,17 +12,12 @@
 <!-- pageheader  -->
 <!-- ============================================================== -->
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col">
         <div class="page-header">
             <h2 class="pageheader-title">Bagian I: Kategori Sistem Elektronik</h2>
             <div class="section-block" id="basicform" tabindex="-1">
                 <p>Bagian ini mengevaluasi tingkat atau kategori sistem elektronik yang digunakan</p>
             </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="text-right">
-            
         </div>
     </div>
 </div>

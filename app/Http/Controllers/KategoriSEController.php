@@ -9,6 +9,7 @@ use App\IdentitasResponden;
 use Illuminate\Http\Request;
 use App\Helpers\KamiHelper;
 use Auth;
+use Session;
 
 class KategoriSEController extends Controller
 {
@@ -98,6 +99,8 @@ class KategoriSEController extends Controller
      */
     public function update(Request $request, $responden_id)
     { 
+        $n_request      = count($request->parameter_id);
+        if ($n_request == 10) {
         $kategoriSE = KategoriSE::where('identitas_responden_id',$responden_id)->get();
         if (is_null($kategoriSE->first())) {
             $x = 0;
@@ -120,6 +123,12 @@ class KategoriSEController extends Controller
                 $x++;
             }
         }
+    }else{
+        Session::flash("alert", [
+            "level" => "danger",
+            "message" => "Semua Wajib diisi!"
+        ]);
+    }
         return redirect()->route('kategori-se.index');
     }
 

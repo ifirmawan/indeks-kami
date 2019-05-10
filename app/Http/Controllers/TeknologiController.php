@@ -9,6 +9,7 @@ use App\IdentitasResponden;
 use Illuminate\Http\Request;
 
 use Auth;
+use Session;
 
 class TeknologiController extends Controller
 {
@@ -25,15 +26,35 @@ class TeknologiController extends Controller
         $responden_id   = (isset($responden->id))? $responden->id : null;
         $get_parameter  = Parameter::where('bagian','VI')->get();
         $Teknologi         = Teknologi::where('identitas_responden_id',$responden_id)->get();
+        $n_batas = 0;
+        $n_ii   = 0;
+        $n_iii  = 0;
+        $n_iv   = 0;
+        $status_batas   = 'Invalid';
+        $status_ii      = 'No';
+        $status_iii     = 'No';
+        $status_iv      = 'No';
         if ($Teknologi->count() > 0){
             foreach ($Teknologi as $key => $value) {
-                
+                switch ($value->parameter->tahap) {
+                    case 'ii':
+                        $n_ii += intval($value->skor);
+                        break;
+                    case 'iii':
+                        $n_iii += intval($value->skor);  
+                        break;
+                    case 'iv':
+                        $n_iv += intval($value->skor);
+                        break;
+                }
                 switch ($value->parameter->kategori_kontrol) {
                     case '1':
                         $parameter['1'][] = $value;
+                        $n_batas += intval($value->skor);  
                         break;
                     case '2':
                         $parameter['2'][] = $value;
+                        $n_batas += intval($value->skor);  
                         break;
                     case '3':
                         $parameter['3'][] = $value;
@@ -55,11 +76,53 @@ class TeknologiController extends Controller
                 }
             }
         }
+        if ($n_batas >= config('skor.kematangan.teknologi.batas') ) {
+            $status_batas ='Valid';
+        }
+        
+        $min_ii     = config('skor.kematangan.teknologi.ii.min');
+        $target_ii  = config('skor.kematangan.teknologi.ii.target');
+
+        $min_iii    = config('skor.kematangan.teknologi.iii.min');
+        $target_iii = config('skor.kematangan.teknologi.iii.target');
+
+        $min_iv     = config('skor.kematangan.teknologi.iv.min');
+        $target_iv  = config('skor.kematangan.teknologi.iv.target');
+
+        if ($n_ii >= $min_ii && $n_ii < $target_ii) {
+            $status_ii ='i+';
+        }elseif($n_ii >= $target_ii){
+            $status_ii ='ii';
+        }
+
+        if ($n_iii >= $min_iii && $n_iii < $target_iii) {
+            $status_iii ='ii+';
+        }elseif($n_iii >= $target_iii){
+            $status_iii ='iii';
+        }
+
+        if ($n_iv >= $min_iv && $n_iv < $target_iv) {
+            $status_iv ='iii+';
+        }elseif($n_iv >= $target_iv){
+            $status_iv ='iv';
+        }
+        
+        $hasil_evaluasi = [
+            'n_batas'=> $n_batas,
+            'n_ii'=> $n_ii,
+            'n_iii'=> $n_iii,
+            'n_iv'=> $n_iv,
+            'status_batas'=> $status_batas,
+            'status_ii'=> $status_ii,
+            'status_iii'=> $status_iii,
+            'status_iv'=> $status_iv
+        ];
         $skor       = ParameterSkor::where('type','sentence')->get();
         $data = [
             'responden'     => $responden,
             'parameter'     => $parameter,
-            'skor'          => $skor
+            'skor'          => $skor,
+            'hasil_evaluasi'=> $hasil_evaluasi
         ];
         return view('teknologi.index')->with($data);
     }
@@ -106,11 +169,10 @@ class TeknologiController extends Controller
     {
         $parameter      = array();
         $responden      = IdentitasResponden::findOrFail($responden_id);
-        $get_parameter  = Parameter::where('bagian','III')->get();
+        $get_parameter  = Parameter::where('bagian','VI')->get();
         $Teknologi      = Teknologi::where('identitas_responden_id',$responden_id)->get();
         if ($Teknologi->count() > 0){
             foreach ($Teknologi as $key => $value) {
-                
                 switch ($value->parameter->kategori_kontrol) {
                     case '1':
                         $parameter['1'][] = $value;
@@ -160,25 +222,26 @@ class TeknologiController extends Controller
         $request->validate([
             'identitas_responden_id' => 'required'
         ]);
-        $responden  = IdentitasResponden::findOrFail($responden_id);
-        $Teknologi     = Teknologi::where('identitas_responden_id',$responden_id)->get();
-        if ($Teknologi->count() > 0) {
-            $x = 0;
-            foreach ($Teknologi as $key => $value) {
-                $Teknologi_exist = Teknologi::find($value->id);
-                $Teknologi_exist->skor = $request->skor[$x];
-                $Teknologi_exist->update();
-                $x++;
-            }
-        }else{
-            $x = 0;
-            foreach ($request->parameter_id as $key => $value) {
+        $responden      = IdentitasResponden::findOrFail($responden_id);
+        $n_request      = count($request->parameter_id);
+        $skor           = config('skor.teknologi');
+        
+        foreach ($request->parameter_id as $key => $value) {
+            $parameter = Parameter::find($value);
+            $Teknologi      = Teknologi::where('identitas_responden_id',$responden_id)
+            ->where('parameter_id',$value)
+            ->first();
+            if (!is_null($Teknologi)) {
+                $Teknologi->skor = intval($request->skor[$key]) * intval($parameter->kategori_kontrol);
+                $Teknologi->nomor = $request->skor[$key];
+                $Teknologi->update();
+            }else{
                 $Teknologi_new = new Teknologi;
                 $Teknologi_new->parameter_id   = $value;
-                $Teknologi_new->skor           = $request->skor[$x];
+                $Teknologi_new->nomor = $request->skor[$key];
+                $Teknologi_new->skor = intval($request->skor[$key]) * intval($parameter->kategori_kontrol);
                 $Teknologi_new->identitas_responden_id = $request->identitas_responden_id;
                 $Teknologi_new->save();
-                $x++;
             }
         }
         return redirect()->route('teknologi.index');

@@ -15,7 +15,7 @@
         width: 15px;
         border-radius: 50%;
         display: inline-block;
-        background-color: #00e64d;
+        background-color: #ff6600;
     }
 
     .dot-kerangka-kerja {
@@ -23,7 +23,7 @@
         width: 15px;
         border-radius: 50%;
         display: inline-block;
-        background-color: #b3ffcc;
+        background-color: #0000ff;
     }
 
     .dot-responden {
@@ -59,14 +59,14 @@
     </div>
     <div class="col-md-8">
         <div>
-            <div class="progress" style="height:25px;">
+            <!--<div class="progress" style="height:25px;">
                 <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
                     aria-valuemax="100"></div>
                 <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
                     aria-valuemin="0" aria-valuemax="100"></div>
                 <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
                     aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+            </div>-->
         </div>
 
     </div>
@@ -74,7 +74,7 @@
 <hr>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col">
         <ul class="country-sales list-group list-group-flush">
             <li class=" list-group-item">
                 <strong>Skor Kategori SE</strong>
@@ -120,7 +120,7 @@
             </li>
         </ul>
     </div>
-    <div class="col-md-6">
+    <!--<div class="col">
         <ul class="country-sales list-group list-group-flush">
             <li class=" list-group-item">
                 Kategori SE
@@ -153,7 +153,7 @@
                 Tingkat Kematangan
             </li>
         </ul>
-    </div>
+    </div>-->
 </div>
 <hr>
 <div class="row">

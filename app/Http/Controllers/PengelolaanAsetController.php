@@ -9,6 +9,7 @@ use App\IdentitasResponden;
 use Illuminate\Http\Request;
 
 use Auth;
+use Session;
 
 class PengelolaanAsetController extends Controller
 {
@@ -25,15 +26,30 @@ class PengelolaanAsetController extends Controller
         $parameter      = array();
         $get_parameter  = Parameter::where('bagian','V')->get();
         $PengelolaanAset = PengelolaanAset::where('identitas_responden_id',$responden_id)->get();
+        $n_batas = 0;
+        $n_ii   = 0;
+        $n_iii  = 0;
+        $status_batas   = 'Invalid';
+        $status_ii      = 'No';
+        $status_iii     = 'No';        
         if ($PengelolaanAset->count() > 0){
             foreach ($PengelolaanAset as $key => $value) {
-                
+                switch ($value->parameter->tahap) {
+                    case 'ii':
+                        $n_ii += intval($value->skor);
+                        break;
+                    case 'iii':
+                        $n_iii += intval($value->skor);  
+                        break;
+                }
                 switch ($value->parameter->kategori_kontrol) {
                     case '1':
                         $parameter['1'][] = $value;
+                        $n_batas += intval($value->skor);  
                         break;
                     case '2':
                         $parameter['2'][] = $value;
+                        $n_batas += intval($value->skor);  
                         break;
                     case '3':
                         $parameter['3'][] = $value;
@@ -55,11 +71,41 @@ class PengelolaanAsetController extends Controller
                 }
             }
         }
+        if ($n_batas >= config('skor.kematangan.pengelolaan_aset.batas') ) {
+            $status_batas ='Valid';
+        }
+        
+        $min_ii     = config('skor.kematangan.pengelolaan_aset.ii.min');
+        $target_ii  = config('skor.kematangan.pengelolaan_aset.ii.target');
+
+        $min_iii    = config('skor.kematangan.pengelolaan_aset.iii.min');
+        $target_iii = config('skor.kematangan.pengelolaan_aset.iii.target');
+
+        if ($n_ii >= $min_ii && $n_ii < $target_ii) {
+            $status_ii ='i+';
+        }elseif($n_ii >= $target_ii){
+            $status_ii ='ii';
+        }
+
+        if ($n_iii >= $min_iii && $n_iii < $target_iii) {
+            $status_iii ='ii+';
+        }elseif($n_iii >= $target_iii){
+            $status_iii ='iii';
+        }
+        $hasil_evaluasi = [
+            'n_batas'=> $n_batas,
+            'n_ii'=> $n_ii,
+            'n_iii'=> $n_iii,
+            'status_batas'=> $status_batas,
+            'status_ii'=> $status_ii,
+            'status_iii'=> $status_iii
+        ];
         $skor       = ParameterSkor::where('type','sentence')->get();
         $data = [
             'responden'     => $responden,
             'parameter'     => $parameter,
-            'skor'          => $skor
+            'skor'          => $skor,
+            'hasil_evaluasi'=> $hasil_evaluasi
         ];
         return view('pengeloaan-aset.index')->with($data);
     }
@@ -106,7 +152,7 @@ class PengelolaanAsetController extends Controller
     {
         $parameter          = array();
         $responden          = IdentitasResponden::findOrFail($responden_id);
-        $get_parameter      = Parameter::where('bagian','III')->get();
+        $get_parameter      = Parameter::where('bagian','V')->get();
         $PengelolaanAset    = PengelolaanAset::where('identitas_responden_id',$responden_id)->get();
         if ($PengelolaanAset->count() > 0){
             foreach ($PengelolaanAset as $key => $value) {
@@ -159,25 +205,24 @@ class PengelolaanAsetController extends Controller
         $request->validate([
             'identitas_responden_id' => 'required'
         ]);
-        $responden  = IdentitasResponden::findOrFail($responden_id);
-        $PengelolaanAset     = PengelolaanAset::where('identitas_responden_id',$responden_id)->get();
-        if ($PengelolaanAset->count() > 0) {
-            $x = 0;
-            foreach ($PengelolaanAset as $key => $value) {
-                $PengelolaanAset_exist = PengelolaanAset::find($value->id);
-                $PengelolaanAset_exist->skor = $request->skor[$x];
-                $PengelolaanAset_exist->update();
-                $x++;
-            }
-        }else{
-            $x = 0;
-            foreach ($request->parameter_id as $key => $value) {
+        $responden       = IdentitasResponden::findOrFail($responden_id);
+        $skor            = config('skor.pengelolaan_aset');
+        foreach ($request->parameter_id as $key => $value) {
+            $parameter = Parameter::find($value);
+            $PengelolaanAset = PengelolaanAset::where('identitas_responden_id',$responden_id)
+            ->where('parameter_id',$value)
+            ->first();
+            if (!is_null($PengelolaanAset)) {
+                $PengelolaanAset->skor  = intval($request->skor[$key]) * intval($parameter->kategori_kontrol);
+                $PengelolaanAset->nomor = $request->skor[$key];
+                $PengelolaanAset->update();
+            }else{
                 $PengelolaanAset_new = new PengelolaanAset;
                 $PengelolaanAset_new->parameter_id   = $value;
-                $PengelolaanAset_new->skor           = $request->skor[$x];
+                $PengelolaanAset_new->nomor = $request->skor[$key];
+                $PengelolaanAset_new->skor = intval($request->skor[$key]) * intval($parameter->kategori_kontrol);
                 $PengelolaanAset_new->identitas_responden_id = $request->identitas_responden_id;
                 $PengelolaanAset_new->save();
-                $x++;
             }
         }
         return redirect()->route('pengelolaan-aset.index');

@@ -5,7 +5,7 @@
 <!-- pageheader  -->
 <!-- ============================================================== -->
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col">
         <div class="page-header">
             <h2 class="pageheader-title">Bagian III: Pengelolaan Risiko Keamanan Informasi</h2>
             <div class="section-block" id="basicform" tabindex="-1">
@@ -13,12 +13,6 @@
                     <b>[Penilaian]</b> Tidak Dilakukan; Dalam Perencanaan; Dalam Penerapan atau Diterapkan Sebagian; Diterapkan Secara Menyeluruh 
                 </p>
             </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="text-right">
-            <label>Tingkat Ketergantungan</label>
-            <h1>Tinggi</h1>
         </div>
     </div>
 </div>
@@ -43,19 +37,19 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="card-pills-1" data-toggle="tab" href="#card-pill-1"
                                     role="tab" aria-controls="card-1" aria-selected="true">
-                                    Kategori Kontrol 1
+                                    Penerapan 1
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="card-pills-2" data-toggle="tab" href="#card-pill-2" role="tab"
                                     aria-controls="card-2" aria-selected="false">
-                                    Kategori Kontrol 2
+                                    Penerapan 2
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="card-pills-3" data-toggle="tab" href="#card-pill-3" role="tab"
                                     aria-controls="card-3" aria-selected="false">
-                                    Kategori Kontrol 3
+                                    Penerapan 3
                                 </a>
                             </li>
                         </ul>

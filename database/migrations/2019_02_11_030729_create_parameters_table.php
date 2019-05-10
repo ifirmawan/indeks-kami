@@ -16,6 +16,7 @@ class CreateParametersTable extends Migration
         Schema::create('parameters', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('bagian', ['I', 'II', 'III', 'IV','V','VI'])->nullable();
+            $table->enum('tahap', ['ii', 'iii', 'iv','v'])->nullable();
             $table->enum('kategori_kontrol', ['1', '2', '3'])->nullable();
             $table->text('parameter');
             $table->integer('skor')->nullable();

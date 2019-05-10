@@ -47,6 +47,7 @@ class HomeController extends Controller
             $batas_se           = config('indeks-kami.ketergantungan_tik');
             $evaluasi_all       = config('indeks-kami.evaluasi_all');
             $total              = intval($n1 + $n2 + $n3 + $n4 + $n5);
+            
             $evaluasi_se        = '';
             $hasil_evaluasi_all = '';
             foreach ($batas_se as $key => $value) {
@@ -60,7 +61,7 @@ class HomeController extends Controller
                     $evaluasi_se = $value['klasifikasi'];
                 }
             }
-    
+
             if (
                 $n1 >= $batas_valid[0] &&
                 $n2 >= $batas_valid[1] &&
@@ -85,6 +86,7 @@ class HomeController extends Controller
             }else{
                 $hasil_evaluasi_all ='Tidak Layak';
             }
+            
             if (isset($responden->id)) {
                 $data  = [
                     'skor_tata_kelola' => $n1,
@@ -139,22 +141,22 @@ class HomeController extends Controller
             ],
             [
                 'label'=> 'Kerangka Kerja Dasar',
-                'backgroundColor'=> 'rgb(179, 255, 204, 0.02)',
-                'borderColor'=> '#b3ffcc',
-                'pointBackgroundColor' => '#b3ffcc',
+                'backgroundColor'=> 'rgb(0, 0, 255, 0.02)',
+                'borderColor'=> '#0000ff',
+                'pointBackgroundColor' => '#0000ff',
                 'pointBorderColor'=> '#fff',
                 'pointHoverBackgroundColor' => '#fff',
-                'pointHoverBorderColor' => '#b3ffcc',
+                'pointHoverBorderColor' => '#0000ff',
                 'data' => [24,30,36,72,42]
             ],
             [
                 'label'=> 'Proses Penerapan',
-                'backgroundColor'=> 'rgb(0, 128, 43, 0.3)',
-                'borderColor'=> '#00e64d',
-                'pointBackgroundColor' => '#00e64d',
+                'backgroundColor'=> 'rgb(255, 102, 0, 0.3)',
+                'borderColor'=> '#ff6600',
+                'pointBackgroundColor' => '#ff6600',
                 'pointBorderColor'=> '#fff',
                 'pointHoverBackgroundColor' => '#fff',
-                'pointHoverBorderColor' => '#00e64d',
+                'pointHoverBorderColor' => '#ff6600',
                 'data' => [72,54,96,132,102]
             ],
             [
