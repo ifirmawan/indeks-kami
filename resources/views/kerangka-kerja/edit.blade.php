@@ -81,7 +81,7 @@
                                                     @if(isset($skor))
 
                                                     @foreach($skor as $key => $option)
-                                                    <option value="{{ $option->skor }}" {{ (isset($value->skor) && $value->skor == $option->skor)? 'selected' : '' }} >{{ ucwords($option->status) }}
+                                                    <option value="{{ $option->skor }}" {{ (isset($value->nomor) && $value->nomor == $option->skor)? 'selected' : '' }} >{{ ucwords($option->status) }}
                                                     </option>
                                                     @endforeach
 
@@ -115,7 +115,7 @@
                                                     @if(isset($skor))
 
                                                     @foreach($skor as $key => $option)
-                                                    <option value="{{ $option->skor }}"  {{ (isset($value->skor) && $value->skor == $option->skor)? 'selected' : '' }} >{{ ucwords($option->status) }}
+                                                    <option value="{{ $option->skor }}"  {{ (isset($value->nomor) && $value->nomor == $option->skor)? 'selected' : '' }} >{{ ucwords($option->status) }}
                                                     </option>
                                                     @endforeach
 
@@ -150,7 +150,7 @@
                                                     @if(isset($skor))
 
                                                     @foreach($skor as $key => $option)
-                                                    <option value="{{ $option->skor }}"  {{ (isset($value->skor) && $value->skor == $option->skor)? 'selected' : '' }} >{{ ucwords($option->status) }}
+                                                    <option value="{{ $option->skor }}"  {{ (isset($value->nomor) && $value->nomor == $option->skor)? 'selected' : '' }} >{{ ucwords($option->status) }}
                                                     </option>
                                                     @endforeach
 
