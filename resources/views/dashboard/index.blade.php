@@ -42,7 +42,7 @@
 <!-- ============================================================== -->
 <div class="row">
     <div class="col">
-        <h3>Hasil Evaluasi</h3>
+        <h3>Total Nilai Evaluasi</h3>
     </div>
     <div class="col">
         <div class="text-right">

@@ -32,6 +32,7 @@ class PengelolaanAsetController extends Controller
         $status_batas   = 'Invalid';
         $status_ii      = 'No';
         $status_iii     = 'No';        
+        
         if ($PengelolaanAset->count() > 0){
             foreach ($PengelolaanAset as $key => $value) {
                 switch ($value->parameter->tahap) {
@@ -45,11 +46,13 @@ class PengelolaanAsetController extends Controller
                 switch ($value->parameter->kategori_kontrol) {
                     case '1':
                         $parameter['1'][] = $value;
-                        $n_batas += intval($value->skor);  
+                        $n_batas += intval($value->skor);
+                        
                         break;
                     case '2':
                         $parameter['2'][] = $value;
-                        $n_batas += intval($value->skor);  
+                        $n_batas += intval($value->skor);
+                        
                         break;
                     case '3':
                         $parameter['3'][] = $value;
@@ -71,6 +74,7 @@ class PengelolaanAsetController extends Controller
                 }
             }
         }
+        $n_batas = $n_batas - 6;
         if ($n_batas >= config('skor.kematangan.pengelolaan_aset.batas') ) {
             $status_batas ='Valid';
         }

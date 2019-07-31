@@ -226,7 +226,7 @@ class ParameterSeeder extends Seeder
             'parameter'=> 'Apakah penyelesaian langkah mitigasi yang sudah diterapkan dievaluasi, melalui proses yang obyektif/terukur untuk memastikan konsistensi dan efektifitasnya?'
             ],
             [
-            'bagian'=>  'III','kategori_kontrol'=>'1','tahap'=>'iv',
+            'bagian'=>  'III','kategori_kontrol'=>'2','tahap'=>'iv',
             'parameter'=> 'Apakah profil risiko berikut bentuk mitigasinya secara berkala dikaji ulang untuk memastikan akurasi dan validitasnya, termasuk merevisi profil terebut apabila ada perubahan kondisi yang signifikan atau keperluan penerapan bentuk pengamanan baru?'
             ],
             [
@@ -243,7 +243,7 @@ class ParameterSeeder extends Seeder
             ],
             [
             'bagian'=>  'IV','kategori_kontrol'=>'1','tahap'=>'ii',
-            'parameter'=> 'Apakah kebijakan keamanan informasi sudah ditetapkan secara formal, dipublikasikan kepada semua staf/karyawan termasuk pihak terkait dan dengan mudah diakses oleh pihak yang'
+            'parameter'=> 'Apakah kebijakan keamanan informasi sudah ditetapkan secara formal, dipublikasikan kepada semua staf/karyawan termasuk pihak terkait dan dengan mudah diakses oleh pihak yang membutuhkannya?'
             ],
             [
             'bagian'=>  'IV','kategori_kontrol'=>'1','tahap'=>'ii',
@@ -379,11 +379,7 @@ class ParameterSeeder extends Seeder
                 ],
                 [
                 'bagian'=>  'V','kategori_kontrol'=>'1','tahap'=>'ii',
-                'parameter'=> 'Apakah tersedia proses untuk merilis suatu aset baru ke dalam lingkungan operasional dan memutakhirkan inventaris aset informasi?'
-                ],
-                [
-                'bagian'=>  'V','kategori_kontrol'=>'1','tahap'=>'ii',
-                'parameter'=> 'Apakah Instansi anda memiliki dan menerapkan perangkat di bawah ini, sebagai kelanjutan dari proses penerapan mitigasi risiko?'
+                'parameter'=> 'Apakah tersedia proses untuk merilis suatu aset baru ke dalam lingkungan operasional dan memutakhirkan inventaris aset informasi?.<br/>Apakah Instansi anda memiliki dan menerapkan perangkat di bawah ini, sebagai kelanjutan dari proses penerapan mitigasi risiko?'
                 ],
                 [
                 'bagian'=>  'V','kategori_kontrol'=>'1','tahap'=>'ii',
@@ -403,7 +399,7 @@ class ParameterSeeder extends Seeder
                 ],
                 [
                 'bagian'=>  'V','kategori_kontrol'=>'1','tahap'=>'ii',
-                'parameter'=> 'Peraturan penggunaan data pribadi yang mensyaratkan pemberian'
+                'parameter'=> 'Peraturan penggunaan data pribadi yang mensyaratkan pemberian ijin tertulis oleh pemilik data pribadi'
                 ],
                 [
                 'bagian'=>  'V','kategori_kontrol'=>'1','tahap'=>'ii',
@@ -458,6 +454,10 @@ class ParameterSeeder extends Seeder
                 'parameter'=> 'Apakah tersedia daftar data/informasi yang harus di-backup dan laporan analisa kepatuhan terhadap prosedur backup-nya?'
                 ],
                 [
+                    'bagian'=>  'V','kategori_kontrol'=>'3','tahap'=>'iii',
+                    'parameter'=> 'Apakah tersedia daftar rekaman pelaksanaan keamanan informasi dan bentuk pengamanan yang sesuai dengan klasifikasinya?'
+                ],
+                [
                 'bagian'=>  'V','kategori_kontrol'=>'3','tahap'=>'iii',
                 'parameter'=> 'Apakah tersedia prosedur penggunaan perangkat pengolah informasi milik pihak ketiga (termasuk perangkat milik pribadi dan mitra kerja/vendor) dengan memastikan aspek HAKI dan pengamanan akses yang digunakan?'
                 ],
@@ -471,7 +471,7 @@ class ParameterSeeder extends Seeder
                 ],
                 [
                 'bagian'=>  'V','kategori_kontrol'=>'1','tahap'=>'ii',
-                'parameter'=> 'Apakah infrastruktur komputasi terlindungi dari dampak lingkungan'
+                'parameter'=> 'Apakah infrastruktur komputasi terlindungi dari dampak lingkungan atau api dan berada dalam kondisi dengan suhu dan kelembaban yang sesuai dengan prasyarat pabrikannya?'
                 ],
                 [
                 'bagian'=>  'V','kategori_kontrol'=>'1','tahap'=>'ii',
