@@ -11,7 +11,7 @@ use App\KerangkaKerja;
 use App\Risiko;
 use App\PengelolaanAset;
 use App\Teknologi;
-
+use App\Helpers\HasilEvaluasi;
 use Auth;
 
 class HomeController extends Controller
@@ -102,6 +102,12 @@ class HomeController extends Controller
         }
         
 
+        $data['hasil_tata_kelola']      = HasilEvaluasi::tataKelola($responden->id);
+        $data['hasil_risiko']           = HasilEvaluasi::risiko($responden->id);
+        $data['hasil_kerangka_kerja']   = HasilEvaluasi::kerangkaKerja($responden->id);
+        $data['hasil_pengelolaan_aset'] = HasilEvaluasi::pengelolaanAset($responden->id);
+        $data['hasil_teknologi']        = HasilEvaluasi::teknologi($responden->id);
+
         return view('dashboard.index',$data);
     }
 
@@ -125,7 +131,8 @@ class HomeController extends Controller
             $n2 = Risiko::getSkor($responden->id);
             $n3 = KerangkaKerja::getSkor($responden->id);
             $n4 = PengelolaanAset::getSkor($responden->id);
-            $n5 = KategoriSE::getSkor($responden->id);
+            $n5 = Teknologi::getSkor($responden->id);
+            
             $data_responden = [ $n1,$n2,$n3,$n4,$n5 ];
         }
         $data = [

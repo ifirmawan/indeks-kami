@@ -41,85 +41,158 @@
 <!-- pageheader  -->
 <!-- ============================================================== -->
 <div class="row">
-    <div class="col">
-        <h3>Total Nilai Evaluasi</h3>
-    </div>
-    <div class="col">
-        <div class="text-right">
-            <h2>{{ (isset($hasil_evaluasi_all))? ucwords($hasil_evaluasi_all) : '' }}</h2>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
+<div class="col-8">
+    <div class="row">
+        <div class="col-5">
         <b>
             Tingkat kelengkapan penerapan <br />
             Standar ISO27001 sesuai Kategori SE
         </b>
     </div>
-    <div class="col-md-8">
-        <div>
-            <!--<div class="progress" style="height:25px;">
-                <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
-                    aria-valuemax="100"></div>
-                <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>-->
+    <div class="col-5">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a  class="nav-link active"
+                id="pills-ii-tab" data-toggle="pill"
+                href="#pills-ii" role="tab"
+                aria-controls="pills-ii"
+                aria-selected="true">
+                II
+                </a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link"
+                id="pills-iii-tab" data-toggle="pill"
+                href="#pills-iii" role="tab"
+                aria-controls="pills-iii"
+                aria-selected="true">
+                III
+            </a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link"
+                id="pills-iv-tab" data-toggle="pill"
+                href="#pills-iv" role="tab"
+                aria-controls="pills-iv"
+                aria-selected="true">
+                IV
+                </a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link"
+                id="pills-v-tab" data-toggle="pill"
+                href="#pills-v" role="tab"
+                aria-controls="pills-v"
+                aria-selected="true">
+                V
+                </a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link"
+                id="pills-vi-tab" data-toggle="pill"
+                href="#pills-vi" role="tab"
+                aria-controls="pills-vi"
+                aria-selected="true">
+                VI
+                </a>
+            </li>
+    </ul>
+</div>
+<div class="col-2">
+    <h3>
+        {{ (isset($hasil_evaluasi_all))? ucwords($hasil_evaluasi_all) : '' }}
+    </h3>
+</div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="tab-content" id="pills-tabContent">
+        <div
+        class="tab-pane fade show active"
+        id="pills-ii" role="tabpanel"
+        aria-labelledby="pills-ii-tab">
+        @include('tata-kelola.hasil-evaluasi',['hasil_evaluasi'=> $hasil_tata_kelola])
         </div>
-
+        <div
+        class="tab-pane fade"
+        id="pills-iii" role="tabpanel"
+        aria-labelledby="pills-iii-tab">
+        @include('risiko.hasil-evaluasi',['hasil_evaluasi'=> $hasil_risiko])     
+        </div>
+        <div
+        class="tab-pane fade"
+        id="pills-iv" role="tabpanel"
+        aria-labelledby="pills-iv-tab">
+        @include('kerangka-kerja.hasil-evaluasi',['hasil_evaluasi'=> $hasil_kerangka_kerja])
+        </div>
+        <div
+        class="tab-pane fade"
+        id="pills-v" role="tabpanel"
+        aria-labelledby="pills-v-tab">
+        @include('pengeloaan-aset.hasil-evaluasi',['hasil_evaluasi'=> $hasil_pengelolaan_aset])
+        </div>
+        <div
+        class="tab-pane fade"
+        id="pills-vi" role="tabpanel"
+        aria-labelledby="pills-vi-tab">
+        @include('teknologi.hasil-evaluasi',['hasil_evaluasi'=> $hasil_teknologi])
+        </div>
+    </div>
+        </div>
     </div>
 </div>
-<hr>
-
-<div class="row">
-    <div class="col">
-        <ul class="country-sales list-group list-group-flush">
-            <li class=" list-group-item">
-                <strong>Skor Kategori SE</strong>
-                <span class="float-right">
-                    {{ (isset($skor_kategori_se))? $skor_kategori_se : '' }}
-                </span>
-            </li>
-            <li class=" list-group-item">
-                <strong>Tata Kelola</strong>
-                <span class="float-right">
-                    {{ (isset($skor_tata_kelola))? $skor_tata_kelola : '' }}
-                </span>
-            </li>
-            <li class=" list-group-item">
-                <strong>Pengelolaan Risiko</strong>
-                <span class="float-right">
-                    {{ (isset($skor_risiko))? $skor_risiko : '' }}
-                </span>
-            </li>
-            <li class=" list-group-item">
-                <strong>Kerangka Kerja Keamanan Informasi</strong>
-                <span class="float-right">
-                    {{ (isset($skor_kerangka_kerja))? $skor_kerangka_kerja : '' }}
-                </span>
-            </li>
-            <li class=" list-group-item">
-                <strong>Pengelolaan Aset</strong>
-                <span class="float-right">
-                    {{ (isset($skor_pengelolaan_aset))? $skor_pengelolaan_aset : '' }}
-                </span>
-            </li>
-            <li class=" list-group-item">
-                <strong>Teknologi dan Keamanan Informasi</strong>
-                <span class="float-right">
-                    {{ (isset($skor_teknologi))? $skor_teknologi : '' }}
-                </span>
-            </li>
-            <li class="card-footer list-group-item">
-                    <strong>Total Skor</strong>
-                <div class="float-right">
-                    {{ (isset($total))? $total : '' }}
-                </div>
-            </li>
-        </ul>
-    </div>
+<div class="col-4">
+    <ul class="country-sales list-group list-group-flush">
+        <li class=" list-group-item">
+            <span>Evaluasi</span>
+            <span class="float-right">
+                Skor
+            </span>
+        </li>
+        <li class=" list-group-item">
+            <strong>I. Kategori SE</strong>
+            <span class="float-right">
+                {{ (isset($skor_kategori_se))? $skor_kategori_se : '' }}
+            </span>
+        </li>
+        <li class=" list-group-item">
+            <strong>II. Tata Kelola</strong>
+            <span class="float-right">
+                {{ (isset($skor_tata_kelola))? $skor_tata_kelola : '' }}
+            </span>
+        </li>
+        <li class=" list-group-item">
+            <strong>III. Pengelolaan Risiko</strong>
+            <span class="float-right">
+                {{ (isset($skor_risiko))? $skor_risiko : '' }}
+            </span>
+        </li>
+        <li class=" list-group-item">
+            <strong>IV. Kerangka Kerja Keamanan Informasi</strong>
+            <span class="float-right">
+                {{ (isset($skor_kerangka_kerja))? $skor_kerangka_kerja : '' }}
+            </span>
+        </li>
+        <li class=" list-group-item">
+            <strong>V. Pengelolaan Aset</strong>
+            <span class="float-right">
+                {{ (isset($skor_pengelolaan_aset))? $skor_pengelolaan_aset : '' }}
+            </span>
+        </li>
+        <li class=" list-group-item">
+            <strong>VI. Teknologi dan Keamanan Informasi</strong>
+            <span class="float-right">
+                {{ (isset($skor_teknologi))? $skor_teknologi : '' }}
+            </span>
+        </li>
+        <li class="card-footer list-group-item">
+            <strong>Total Skor</strong>
+            <div class="float-right">
+                {{ (isset($total))? $total : '' }}
+            </div>
+        </li>
+    </ul>
+</div>
     <!--<div class="col">
         <ul class="country-sales list-group list-group-flush">
             <li class=" list-group-item">

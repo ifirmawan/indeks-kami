@@ -6,6 +6,7 @@ use App\PengelolaanAset;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
+use App\Helpers\HasilEvaluasi;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -26,90 +27,13 @@ class PengelolaanAsetController extends Controller
         $parameter      = array();
         $get_parameter  = Parameter::where('bagian','V')->get();
         $PengelolaanAset = PengelolaanAset::where('identitas_responden_id',$responden_id)->get();
-        $n_batas = 0;
-        $n_ii   = 0;
-        $n_iii  = 0;
-        $status_batas   = 'Invalid';
-        $status_ii      = 'No';
-        $status_iii     = 'No';        
         
-        if ($PengelolaanAset->count() > 0){
-            foreach ($PengelolaanAset as $key => $value) {
-                switch ($value->parameter->tahap) {
-                    case 'ii':
-                        $n_ii += intval($value->skor);
-                        break;
-                    case 'iii':
-                        $n_iii += intval($value->skor);  
-                        break;
-                }
-                switch ($value->parameter->kategori_kontrol) {
-                    case '1':
-                        $parameter['1'][] = $value;
-                        $n_batas += intval($value->skor);
-                        
-                        break;
-                    case '2':
-                        $parameter['2'][] = $value;
-                        $n_batas += intval($value->skor);
-                        
-                        break;
-                    case '3':
-                        $parameter['3'][] = $value;
-                        break;
-                }
-            }
-        }else if ($get_parameter->count() > 0) {
-            foreach ($get_parameter as $key => $value) {
-                switch ($value->kategori_kontrol) {
-                    case '1':
-                        $parameter['1'][] = $value;
-                        break;
-                    case '2':
-                        $parameter['2'][] = $value;
-                        break;
-                    case '3':
-                        $parameter['3'][] = $value;
-                        break;
-                }
-            }
-        }
-        $n_batas = $n_batas - 6;
-        if ($n_batas >= config('skor.kematangan.pengelolaan_aset.batas') ) {
-            $status_batas ='Valid';
-        }
-        
-        $min_ii     = config('skor.kematangan.pengelolaan_aset.ii.min');
-        $target_ii  = config('skor.kematangan.pengelolaan_aset.ii.target');
-
-        $min_iii    = config('skor.kematangan.pengelolaan_aset.iii.min');
-        $target_iii = config('skor.kematangan.pengelolaan_aset.iii.target');
-
-        if ($n_ii >= $min_ii && $n_ii < $target_ii) {
-            $status_ii ='i+';
-        }elseif($n_ii >= $target_ii){
-            $status_ii ='ii';
-        }
-
-        if ($n_iii >= $min_iii && $n_iii < $target_iii) {
-            $status_iii ='ii+';
-        }elseif($n_iii >= $target_iii){
-            $status_iii ='iii';
-        }
-        $hasil_evaluasi = [
-            'n_batas'=> $n_batas,
-            'n_ii'=> $n_ii,
-            'n_iii'=> $n_iii,
-            'status_batas'=> $status_batas,
-            'status_ii'=> $status_ii,
-            'status_iii'=> $status_iii
-        ];
         $skor       = ParameterSkor::where('type','sentence')->get();
         $data = [
             'responden'     => $responden,
             'parameter'     => $parameter,
             'skor'          => $skor,
-            'hasil_evaluasi'=> $hasil_evaluasi
+            'hasil_evaluasi'=> HasilEvaluasi::pengelolaanAset($responden_id)
         ];
         return view('pengeloaan-aset.index')->with($data);
     }

@@ -6,6 +6,7 @@ use App\TataKelola;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
+use App\Helpers\HasilEvaluasi;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -25,105 +26,13 @@ class TataKelolaController extends Controller
         $responden_id   = (isset($responden->id))? $responden->id : null;
         $get_parameter  = Parameter::where('bagian','II')->get();
         $tataKelola     = TataKelola::where('identitas_responden_id',$responden_id)->get();
-        $n_batas = 0;
-        $n_ii   = 0;
-        $n_iii  = 0;
-        $n_iv   = 0;
-        $status_batas   = 'Invalid';
-        $status_ii      = 'No';
-        $status_iii     = 'No';
-        $status_iv      = 'No';
-        $indeks_tata_kelola = config('indeks-kami.tata_kelola');
-        if ($tataKelola->count() > 0){
-            foreach ($tataKelola as $key => $value) {
-                switch ($value->parameter->tahap) {
-                    case 'ii':
-                        $n_ii += intval($value->skor);
-                        break;
-                    case 'iii':
-                        $n_iii += intval($value->skor);  
-                        break;
-                    case 'iv':
-                        $n_iv += intval($value->skor);
-                        break;
-                }
-                switch ($value->parameter->kategori_kontrol) {
-                    case '1':
-                        $parameter['1'][] = $value;
-                        $n_batas += intval($value->skor);  
-                        break;
-                    case '2':
-                        $parameter['2'][] = $value;
-                        $n_batas += intval($value->skor);  
-                        break;
-                    case '3':
-                        $parameter['3'][]   = $value;
-                        break;
-                }
-            }
-        }else if ($get_parameter->count() > 0) {
-            foreach ($get_parameter as $key => $value) {
-                switch ($value->kategori_kontrol) {
-                    case '1':
-                        $parameter['1'][] = $value;
-                        break;
-                    case '2':
-                        $parameter['2'][] = $value;
-                        break;
-                    case '3':
-                        $parameter['3'][] = $value;
-                        break;
-                }
-            }
-        }
-        
-        if ($n_batas >= config('skor.kematangan.tata_kelola.batas') ) {
-            $status_batas ='Valid';
-        }
-        
-        $min_ii     = config('skor.kematangan.tata_kelola.ii.min');
-        $target_ii  = config('skor.kematangan.tata_kelola.ii.target');
-
-        $min_iii    = config('skor.kematangan.tata_kelola.iii.min');
-        $target_iii = config('skor.kematangan.tata_kelola.iii.target');
-
-        $min_iv     = config('skor.kematangan.tata_kelola.iv.min');
-        $target_iv  = config('skor.kematangan.tata_kelola.iv.target');
-
-        if ($n_ii >= $min_ii && $n_ii < $target_ii) {
-            $status_ii ='i+';
-        }elseif($n_ii >= $target_ii){
-            $status_ii ='ii';
-        }
-
-        if ($n_iii >= $min_iii && $n_iii < $target_iii) {
-            $status_iii ='ii+';
-        }elseif($n_iii >= $target_iii){
-            $status_iii ='iii';
-        }
-
-        if ($n_iv >= $min_iv && $n_iv < $target_iv) {
-            $status_iv ='iii+';
-        }elseif($n_iv >= $target_iv){
-            $status_iv ='iv';
-        }
-        
-        $hasil_evaluasi = [
-            'n_batas'=> $n_batas,
-            'n_ii'=> $n_ii,
-            'n_iii'=> $n_iii,
-            'n_iv'=> $n_iv,
-            'status_batas'=> $status_batas,
-            'status_ii'=> $status_ii,
-            'status_iii'=> $status_iii,
-            'status_iv'=> $status_iv
-        ];
         $skor           = ParameterSkor::where('type','sentence')->get();
+        $indeks_tata_kelola = config('indeks-kami.tata_kelola');
         $data = [
             'responden'     => $responden,
             'parameter'     => $parameter,
             'indeks_tata_kelola' => $indeks_tata_kelola,
-            'hasil_evaluasi'=> $hasil_evaluasi
+            'hasil_evaluasi'=> HasilEvaluasi::tataKelola($responden_id)
         ];
         return view('tata-kelola.index')->with($data);
     }

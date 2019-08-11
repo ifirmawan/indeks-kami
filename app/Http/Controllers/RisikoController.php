@@ -6,6 +6,7 @@ use App\Risiko;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
+use App\Helpers\HasilEvaluasi;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -26,121 +27,11 @@ class RisikoController extends Controller
         $parameter      = array();
         $get_parameter  = Parameter::where('bagian','III')->get();
         $Risiko         = Risiko::where('identitas_responden_id',$responden_id)->get();
-        $n_batas    = 0;
-        $n_ii       = 0;
-        $n_iii      = 0;
-        $n_iv       = 0;
-        $n_v        = 0;
-        $status_batas   = 'Invalid';
-        $status_ii      = 'No';
-        $status_iii     = 'No';
-        $status_iv      = 'No';
-        $status_v       = 'No';
-        if ($Risiko->count() > 0){
-            foreach ($Risiko as $key => $value) {
-                switch ($value->parameter->tahap) {
-                    case 'ii':
-                        $n_ii += intval($value->skor);
-                        break;
-                    case 'iii':
-                        $n_iii += intval($value->skor);  
-                        break;
-                    case 'iv':
-                        $n_iv += intval($value->skor);
-                        break;
-                    case 'v':
-                        $n_v += intval($value->skor);
-                        break;
-                }
-                switch ($value->parameter->kategori_kontrol) {
-                    case '1':
-                        $parameter['1'][] = $value;
-                        $n_batas += $value->skor;
-                        break;
-                    case '2':
-                        $parameter['2'][] = $value;
-                        $n_batas += $value->skor;
-                        break;
-                    case '3':
-                        $parameter['3'][] = $value;
-                        break;
-                }
-            }
-        }else if ($get_parameter->count() > 0) {
-            foreach ($get_parameter as $key => $value) {
-                switch ($value->kategori_kontrol) {
-                    case '1':
-                        $parameter['1'][] = $value;
-                        $n_batas += intval($value->skor);  
-                        break;
-                    case '2':
-                        $parameter['2'][] = $value;
-                        $n_batas += intval($value->skor);  
-                        break;
-                    case '3':
-                        $parameter['3'][] = $value;
-                        break;
-                }
-            }
-        }
-        if ($n_batas >= config('skor.kematangan.risiko.batas') ) {
-            $status_batas ='Valid';
-        }
-        
-        $min_ii     = config('skor.kematangan.risiko.ii.min');
-        $target_ii  = config('skor.kematangan.risiko.ii.target');
-
-        $min_iii    = config('skor.kematangan.risiko.iii.min');
-        $target_iii = config('skor.kematangan.risiko.iii.target');
-
-        $min_iv     = config('skor.kematangan.risiko.iv.min');
-        $target_iv  = config('skor.kematangan.risiko.iv.target');
-
-        $min_v     = config('skor.kematangan.risiko.iv.min');
-        $target_v  = config('skor.kematangan.risiko.iv.target');
-
-        if ($n_ii >= $min_ii && $n_ii < $target_ii) {
-            $status_ii ='i+';
-        }elseif($n_ii >= $target_ii){
-            $status_ii ='ii';
-        }
-
-        if ($n_iii >= $min_iii && $n_iii < $target_iii) {
-            $status_iii ='ii+';
-        }elseif($n_iii >= $target_iii){
-            $status_iii ='iii';
-        }
-
-        if ($n_iv >= $min_iv && $n_iv < $target_iv) {
-            $status_iv ='iii+';
-        }elseif($n_iv >= $target_iv){
-            $status_iv ='iv';
-        }
-
-        if ($n_v >= $min_v && $n_v < $target_v) {
-            $status_v ='iv+';
-        }elseif($n_v >= $target_v){
-            $status_v ='v';
-        }
-        
-        $hasil_evaluasi = [
-            'n_batas'=> $n_batas,
-            'n_ii'=> $n_ii,
-            'n_iii'=> $n_iii,
-            'n_iv'=> $n_iv,
-            'n_v'=> $n_v,
-            'status_batas'=> $status_batas,
-            'status_ii'=> $status_ii,
-            'status_iii'=> $status_iii,
-            'status_iv'=> $status_iv,
-            'status_v'=> $status_v
-        ];
-        
-        $skor       = ParameterSkor::where('type','sentence')->get();
+        $skor           = ParameterSkor::where('type','sentence')->get();
         $data = [
             'responden'     => $responden,
             'parameter'     => $parameter,
-            'hasil_evaluasi'=> $hasil_evaluasi,
+            'hasil_evaluasi'=> HasilEvaluasi::risiko($responden_id),
             'skor'          => $skor
         ];
         return view('risiko.index')->with($data);
