@@ -1,4 +1,4 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="bsn-logo.png" width="250"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -6,66 +6,72 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
+<br>
 
-## About Laravel
+## 🤨 Apa itu Indeks KAMI ?
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="left"><b>Indeks Keamanan Informasi (KAMI)</b> merupakan aplikasi yang digunakan sebagai alat bantu untuk melakukan asesmen dan evaluasi tingkat kesiapan (Kelengkapan dan Kematangan) penerapan keamanan informasi berdasarkan kriteria SNI ISO/IEC 27001, yaitu Tata Kelola, Pengelolaan Risiko, Kerangka Kerja, Pengelolaan Aset, Aspek Teknologi dengan suplemen Pengamanan Keterlibatan Pihak Ketiga Penyedia Layanan, Pengamanan Layanan Infrastruktur Awan dan Perlindungan Data Pribadi.</p>
+<p align="left">Indeks KAMI tidak ditujukan untuk menganalisis kelayakan atau efektivitas bentuk pengamanan yang ada, melainkan sebagai perangkat untuk memberikan gambaran kondisi kesiapan kerangka kerja keamanan informasi.</p>
+<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🌱 Latar belakang terbentuknya Indeks KAMI
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<p align="left">Perkembangan teknologi informasi dan komunikasi yang sangat pesat dan disrupsi pola bisnis di era siber yang kini terus terjadi secara dinamis memunculkan risiko dan celah keamanan informasi.</p>
+<p align="left">Digitalisasi proses kerja menjadikan keamanan informasi menjadi hal yang berpengaruh pada keseluruhan proses bisnis sehingga sangat penting untuk menjadi perhatian utama.</p>
+<p align="left">Keterlibatan pihak ketiga dalam supply chain layanan perusahaan menimbulkan risiko baru. Layanan berbasis cloud memberikan peluang efisiensi dan peningkatan kinerja yang sangat signifikan bagi perusahaan namun juga menimbulkan risiko baru terkait data yang berada pada pengendalian pihak penyelenggara layanan. Beberapa aspek kebutuhan keamanan baru tersebut perlu dimitgasi agar bisnis dapat terus berjalan dengan baik.</p>
+<br>
 
-## Learning Laravel
+## 📛 Indeks KAMI bukan alat analisis ?
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p align="left">Indeks KAMI tidak ditujukan untuk menganalisis kelayakan atau efektivitas bentuk pengamanan yang ada, melainkan sebagai perangkat untuk memberikan gambaran kondisi kesiapan kerangka kerja keamanan informasi kepada Pimpinan Instansi.</p>
+<p align="left">Implementasi Indeks KAMI dilakukan oleh penyelenggara layanan publik secara elektronik melalui Bimbingan Teknis, Asesmen, dan Konsultasi.</p>
+<br>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
+## 🎏 Unduh Index KAMI
 
-## Laravel Sponsors
+<p align="left">Official Indeks KAMI dapat anda unduh di situs resminya BSSN :</p>
+- [INDEKS KAMI RESMI](https://bssn.go.id/indeks-kami/)
+<br>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 🎈 Apakah ini Repo resmi milik BSSN ?
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
+<p align="left">Repositori ini <b>BUKAN</b> milik BSSN, Repositori ini berisi Aplikasi hasil dari implementasi Indeks KAMI milik BSSN. Aplikasi dalam repositori ini dibuat menggunakan PHP framework Laravel.</p>
+<p align="left">Kami berusaha untuk mengembangkan Aplikasi ini dengan hasil keluaran(output) yang hampir sama dengan Indeks KAMI milik BSSN. Dimana kami berharap Indeks KAMI dapat berjalan melalui web service dengan target platform yang tidak terbatas hanya pada pengguna Microsoft Excel.</p>
+<br>
 
-## Contributing
+## 🎨 Tujuan dibuatnya Aplikasi ?
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<p align="left">Tujuan awal dibuatnya aplikasi ini adalah untuk penelitian dan pembelajaran mahasiswa. Tapi kami juga memiliki harapan untuk menjadikan aplikasi ini sebagai aplikasi resmi BSSN.</p>
+<br>
 
-## Security Vulnerabilities
+## 🥇 Berkontribusi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<p align="left">Terimakasih kami sampaikan untuk para kontributor yang sudah meluangkan waktu untuk membantu mengembangkan aplikasi ini.</p><br>
+<p align="left">Untuk kalian yang ingin ikut berkontribusi dalam aplikasi ini silahkan ikuti langkah - langkah berikut agar Pull Request kalian berhasil :</p>
 
-## License
+- Fork [repositori utama aplikasi ini](https://github.com/ifirmawan/indeks-kami).
+- Clone repositori yang telah anda fork pada penyimpanan internal komputer kalian ``` git clone https://github.com/yourusername/indeks-kami.git ```
+- Buat branch baru dengan nama <i>username</i> Github anda ``` git branch -b yourusername ```
+- Setelah selesai menambahkan perubahan, gunakan ``` git add . ```
+- Lalu commit dengan pesan diawali huruf Kapital ``` git commit -m "Huruf kapital diawal" ```
+- Kalian bisa merge terlebih dahulu ke master dengan perintah ``` git checkout master ``` lalu ``` git merge yourusername ```, atau langsung lakukan PR(Pull Request)
+- Lakukan Pull Requet kedalam branch <b>developer</b>, jangan pernah melakukan Pull Request ke dalam branch <b>master</b>.
+- Selesai, dan tunggu hingga Maintenancer kami melakukan merge pada Pull Request kalian.
 
+<p align="left">Selamat dan Terimakasih karena telah melakukan Pull Request.</p>
+<br>
+
+## 🧨 Kerentanan Keamanan
+
+Bila anda menemukan kerentanan dalam keamanan aplikasi ini, harap buat <i>issue</i> dan deskripsikan kerentanan apa yang anda dapat dari aplikasi ini.
+<br>
+
+## 📡 Pemasangan, peluncuran atau Pengembangan
+
+Untuk memulai peluncuran atau pemasang dan pengembangan aplikasi ini, anda bisa melihat [dokumentasi PHP framework Laravel](https://laravel.com/docs) pada situs resminya.
+<br>
+
+## 🎁 Lisensi
+
+Lisensi untuk aplikasi ini mengikuti kerangka kerja pembentuknya yaitu PHP framework Laravel : 
 The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
