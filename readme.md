@@ -45,11 +45,11 @@
 <p align="left">Untuk kalian yang ingin ikut berkontribusi dalam aplikasi ini silahkan ikuti langkah - langkah berikut agar Pull Request kalian berhasil :</p>
 
 - Fork [repositori utama aplikasi ini](https://github.com/ifirmawan/indeks-kami).
-- Clone repositori yang telah anda fork pada penyimpanan internal komputer kalian ```bash git clone https://github.com/yourusername/indeks-kami.git```
-- Buat branch baru dengan nama <i>username</i> Github anda ```bash git branch -b yourusername```
-- Setelah selesai menambahkan perubahan, gunakan ```bash git add .```
-- Lalu commit dengan pesan diawali huruf Kapital ```base git commit -m "Huruf kapital diawal"```
-- Kalian bisa merge terlebih dahulu ke master dengan perintah ```bash git checkout master``` lalu ```bash git merge yourusername```, atau langsung lakukan PR(Pull Request)
+- Clone repositori yang telah anda fork pada penyimpanan internal komputer kalian ``` git clone https://github.com/yourusername/indeks-kami.git ```
+- Buat branch baru dengan nama <i>username</i> Github anda ``` git branch -b yourusername ```
+- Setelah selesai menambahkan perubahan, gunakan ``` git add . ```
+- Lalu commit dengan pesan diawali huruf Kapital ``` git commit -m "Huruf kapital diawal" ```
+- Kalian bisa merge terlebih dahulu ke master dengan perintah ``` git checkout master ``` lalu ``` git merge yourusername ```, atau langsung lakukan PR(Pull Request)
 - Lakukan Pull Requet kedalam branch <b>developer</b>, jangan pernah melakukan Pull Request ke dalam branch <b>master</b>.
 - Selesai, dan tunggu hingga Maintenancer kami melakukan merge pada Pull Request kalian.
 
