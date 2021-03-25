@@ -6,7 +6,7 @@ use App\PengelolaanAset;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
-use App\Helpers\HasilEvaluasi;
+use App\Traits\KamiTrait;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -14,6 +14,7 @@ use Session;
 
 class PengelolaanAsetController extends Controller
 {
+    use KamiTrait;
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class PengelolaanAsetController extends Controller
     {
         $user_id        = (isset(Auth::user()->id))? Auth::user()->id : null;
         $responden      = IdentitasResponden::where('user_id',$user_id)->get()->first(); 
-        $responden_id   = (isset($responden->id))? $responden->id : null;
+        $responden_id   = ($responden->id ?? false)? $responden->id : null;
         $parameter      = array();
         $get_parameter  = Parameter::where('bagian','V')->get();
         $PengelolaanAset = PengelolaanAset::where('identitas_responden_id',$responden_id)->get();
@@ -33,7 +34,7 @@ class PengelolaanAsetController extends Controller
             'responden'     => $responden,
             'parameter'     => $parameter,
             'skor'          => $skor,
-            'hasil_evaluasi'=> HasilEvaluasi::pengelolaanAset($responden_id)
+            'hasil_evaluasi'=> $this->pengelolaanAset($responden_id)
         ];
         return view('pengeloaan-aset.index')->with($data);
     }

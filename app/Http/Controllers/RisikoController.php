@@ -6,7 +6,7 @@ use App\Risiko;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
-use App\Helpers\HasilEvaluasi;
+use App\Traits\KamiTrait;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -14,6 +14,7 @@ use Session;
 
 class RisikoController extends Controller
 {
+    use KamiTrait;
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class RisikoController extends Controller
     {
         $user_id        = (isset(Auth::user()->id))? Auth::user()->id : null;
         $responden      = IdentitasResponden::where('user_id',$user_id)->get()->first(); 
-        $responden_id   = (isset($responden->id))? $responden->id : null;
+        $responden_id   = ($responden->id ?? false)? $responden->id : null;
         $parameter      = array();
         $get_parameter  = Parameter::where('bagian','III')->get();
         $Risiko         = Risiko::where('identitas_responden_id',$responden_id)->get();
@@ -31,7 +32,7 @@ class RisikoController extends Controller
         $data = [
             'responden'     => $responden,
             'parameter'     => $parameter,
-            'hasil_evaluasi'=> HasilEvaluasi::risiko($responden_id),
+            'hasil_evaluasi'=> $this->risiko($responden_id),
             'skor'          => $skor
         ];
         return view('risiko.index')->with($data);

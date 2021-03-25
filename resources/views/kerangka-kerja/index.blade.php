@@ -56,7 +56,7 @@
                         </li>
                     </ul>
                     <div class="toolbar ml-auto">
-                        @if(isset($responden->id))
+                        @if($responden->id ?? false)
                         <a href="{{ route('kerangka-kerja.edit',$responden->id) }}" class="btn btn-primary btn-sm">
                             <i class="fas fa-pencil-alt"></i>&nbsp;
                             Edit

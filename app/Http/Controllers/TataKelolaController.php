@@ -6,13 +6,14 @@ use App\TataKelola;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
-use App\Helpers\HasilEvaluasi;
+use App\Traits\KamiTrait;
 use Illuminate\Http\Request;
 
 use Auth;
 
 class TataKelolaController extends Controller
 {
+    use KamiTrait;
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class TataKelolaController extends Controller
         $user_id        = (isset(Auth::user()->id))? Auth::user()->id : null;
         $responden      = IdentitasResponden::where('user_id',$user_id)->get()->first(); 
         $parameter      = array();
-        $responden_id   = (isset($responden->id))? $responden->id : null;
+        $responden_id   = ($responden->id ?? false)? $responden->id : null;
         $get_parameter  = Parameter::where('bagian','II')->get();
         $tataKelola     = TataKelola::where('identitas_responden_id',$responden_id)->get();
         $skor           = ParameterSkor::where('type','sentence')->get();
@@ -32,7 +33,7 @@ class TataKelolaController extends Controller
             'responden'     => $responden,
             'parameter'     => $parameter,
             'indeks_tata_kelola' => $indeks_tata_kelola,
-            'hasil_evaluasi'=> HasilEvaluasi::tataKelola($responden_id)
+            'hasil_evaluasi'=> $this->tataKelola($responden_id)
         ];
         return view('tata-kelola.index')->with($data);
     }
@@ -47,7 +48,7 @@ class TataKelolaController extends Controller
         $user_id        = (isset(Auth::user()->id))? Auth::user()->id : null;
         $responden      = IdentitasResponden::where('user_id',$user_id)->get()->first(); 
         $parameter      = array();
-        $responden_id   = (isset($responden->id))? $responden->id : null;
+        $responden_id   = ($responden->id ?? false)? $responden->id : null;
         $get_parameter  = Parameter::where('bagian','II')->get();
         $tataKelola     = TataKelola::where('identitas_responden_id',$responden_id)->get();
         if ($tataKelola->count() > 0){

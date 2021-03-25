@@ -48,7 +48,6 @@ class ParameterSkorSeeder extends Seeder
             'status'=>  'Diterapkan Secara Menyeluruh',
             'skor'  => 3
             ],
-
-            ]);
+        ]);
     }
 }

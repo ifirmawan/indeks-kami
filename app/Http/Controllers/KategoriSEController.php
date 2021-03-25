@@ -7,12 +7,13 @@ use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
 use Illuminate\Http\Request;
-use App\Helpers\KamiHelper;
+use App\Traits\KamiTrait;;
 use Auth;
 use Session;
 
 class KategoriSEController extends Controller
 {
+    use KamiTrait;
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class KategoriSEController extends Controller
         $user_id            = Auth::user()->id;
         $parameter          = Parameter::where('bagian','I')->get();
         $responden          = IdentitasResponden::where('user_id',$user_id)->get()->first();
-        if (isset($responden->id)) {
+        if ($responden->id ?? false) {
             $kategori_se        = KategoriSE::where('identitas_responden_id',$responden->id)->get();
             if ($kategori_se->count() > 0) {
                 $parameter      = $kategori_se;
@@ -86,7 +87,7 @@ class KategoriSEController extends Controller
         $data['skor']       = ParameterSkor::where('type','alfabet')->get();
         $data['kategoriSE'] = $kategoriSE;
         $data['responden']  = IdentitasResponden::findOrFail($responden_id);
-        $data['skor']       = KamiHelper::getEnumValues('kategori_s_es','skor');
+        $data['skor']       = $this->getEnumValues('kategori_s_es','skor');
         return view('kategori-se.edit',$data);
     }
 

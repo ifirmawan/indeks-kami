@@ -6,7 +6,7 @@ use App\Teknologi;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
-use App\Helpers\HasilEvaluasi;
+use App\Traits\KamiTrait;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -14,6 +14,7 @@ use Session;
 
 class TeknologiController extends Controller
 {
+    use KamiTrait;
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +25,7 @@ class TeknologiController extends Controller
         $user_id        = (isset(Auth::user()->id))? Auth::user()->id : null;
         $responden      = IdentitasResponden::where('user_id',$user_id)->get()->first(); 
         $parameter      = array();
-        $responden_id   = (isset($responden->id))? $responden->id : null;
+        $responden_id   = ($responden->id ?? false)? $responden->id : null;
         $get_parameter  = Parameter::where('bagian','VI')->get();
         $Teknologi      = Teknologi::where('identitas_responden_id',$responden_id)->get();
         
@@ -33,7 +34,7 @@ class TeknologiController extends Controller
             'responden'     => $responden,
             'parameter'     => $parameter,
             'skor'          => $skor,
-            'hasil_evaluasi'=> HasilEvaluasi::teknologi($responden_id)
+            'hasil_evaluasi'=> $this->teknologi($responden_id)
         ];
         return view('teknologi.index')->with($data);
     }

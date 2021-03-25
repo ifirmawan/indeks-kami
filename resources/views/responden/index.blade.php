@@ -20,7 +20,7 @@
 						</ol>
 					</nav>
 				</div>
-				@if(isset($responden->id))
+				@if($responden->id ?? false)
 				<a href="{{ route('responden.edit',$responden->id) }}" class="float-right btn btn-primary">Edit Responden</a>
 				@else
 				<a href="{{ route('responden.create') }}" class="float-right btn btn-primary">Buat Responden</a>

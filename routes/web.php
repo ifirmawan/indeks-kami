@@ -23,7 +23,6 @@ Route::resource('pengelolaan-aset', 'PengelolaanAsetController')->middleware('au
 Route::resource('risiko', 'RisikoController')->middleware('auth');
 Route::resource('teknologi', 'TeknologiController')->middleware('auth');
 Route::resource('responden', 'RespondenController')->middleware('auth');
-Auth::routes();
 
 //Route::get('tata-kelola-status', 'TataKelolaController@status')->name('tata-kelola.status')->middleware('auth');
 
