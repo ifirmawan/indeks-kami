@@ -22,7 +22,7 @@
 <!-- ============================================================== -->
 
 <div class="ecommerce-widget">
-    @if(isset($responden->id))
+    @if($responden->id ?? false)
     <form action="{{ route('kerangka-kerja.update',$responden->id) }}" method="post">
 
         {{ csrf_field() }}

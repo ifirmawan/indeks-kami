@@ -11,11 +11,12 @@ use App\KerangkaKerja;
 use App\Risiko;
 use App\PengelolaanAset;
 use App\Teknologi;
-use App\Helpers\HasilEvaluasi;
+use App\Traits\KamiTrait;
 use Auth;
 
 class HomeController extends Controller
 {
+    use KamiTrait;
     /**
      * Create a new controller instance.
      *
@@ -37,12 +38,12 @@ class HomeController extends Controller
         $responden  = IdentitasResponden::where('user_id',$user_id)->get()->first();
         $data       = array();
         if (!is_null($responden)) {
-            $n1         = TataKelola::getSkor($responden->id);
-            $n2         = Risiko::getSkor($responden->id);
-            $n3         = KerangkaKerja::getSkor($responden->id);
-            $n4         = PengelolaanAset::getSkor($responden->id);
-            $n5         = Teknologi::getSkor($responden->id);
-            $total_se   = KategoriSE::getSkor($responden->id);
+            $n1         = TataKelola::getSkor($responden->id ?? 0);
+            $n2         = Risiko::getSkor($responden->id ?? 0);
+            $n3         = KerangkaKerja::getSkor($responden->id ?? 0);
+            $n4         = PengelolaanAset::getSkor($responden->id ?? 0);
+            $n5         = Teknologi::getSkor($responden->id ?? 0);
+            $total_se   = KategoriSE::getSkor($responden->id ?? 0);
             $batas_valid        = config('indeks-kami.batas_valid');
             $batas_se           = config('indeks-kami.ketergantungan_tik');
             $evaluasi_all       = config('indeks-kami.evaluasi_all');
@@ -87,7 +88,7 @@ class HomeController extends Controller
                 $hasil_evaluasi_all ='Tidak Layak';
             }
             
-            if (isset($responden->id)) {
+            if ($responden->id ?? false) {
                 $data  = [
                     'skor_tata_kelola' => $n1,
                     'skor_risiko' => $n2,
@@ -102,11 +103,11 @@ class HomeController extends Controller
         }
         
 
-        $data['hasil_tata_kelola']      = HasilEvaluasi::tataKelola($responden->id);
-        $data['hasil_risiko']           = HasilEvaluasi::risiko($responden->id);
-        $data['hasil_kerangka_kerja']   = HasilEvaluasi::kerangkaKerja($responden->id);
-        $data['hasil_pengelolaan_aset'] = HasilEvaluasi::pengelolaanAset($responden->id);
-        $data['hasil_teknologi']        = HasilEvaluasi::teknologi($responden->id);
+        $data['hasil_tata_kelola']      = $this->tataKelola($responden->id ?? 0);
+        $data['hasil_risiko']           = $this->risiko($responden->id ?? 0);
+        $data['hasil_kerangka_kerja']   = $this->kerangkaKerja($responden->id ?? 0);
+        $data['hasil_pengelolaan_aset'] = $this->pengelolaanAset($responden->id ?? 0);
+        $data['hasil_teknologi']        = $this->teknologi($responden->id ?? 0);
 
         return view('dashboard.index',$data);
     }
@@ -126,12 +127,12 @@ class HomeController extends Controller
         $user_id        = Auth::user()->id;
         $responden      = IdentitasResponden::where('user_id',$user_id)->get()->first();
         $data_responden = [];
-        if (isset($responden->id)) {
-            $n1 = TataKelola::getSkor($responden->id);
-            $n2 = Risiko::getSkor($responden->id);
-            $n3 = KerangkaKerja::getSkor($responden->id);
-            $n4 = PengelolaanAset::getSkor($responden->id);
-            $n5 = Teknologi::getSkor($responden->id);
+        if ($responden->id ?? false) {
+            $n1 = TataKelola::getSkor($responden->id ?? 0);
+            $n2 = Risiko::getSkor($responden->id ?? 0);
+            $n3 = KerangkaKerja::getSkor($responden->id ?? 0);
+            $n4 = PengelolaanAset::getSkor($responden->id ?? 0);
+            $n5 = Teknologi::getSkor($responden->id ?? 0);
             
             $data_responden = [ $n1,$n2,$n3,$n4,$n5 ];
         }

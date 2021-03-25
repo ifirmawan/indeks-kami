@@ -6,7 +6,7 @@ use App\KerangkaKerja;
 use App\Parameter;
 use App\ParameterSkor;
 use App\IdentitasResponden;
-use App\Helpers\HasilEvaluasi;
+use App\Traits\KamiTrait;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -14,6 +14,7 @@ use Session;
 
 class KerangkaKerjaController extends Controller
 {
+    use KamiTrait;
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class KerangkaKerjaController extends Controller
     {
         $user_id        = (isset(Auth::user()->id))? Auth::user()->id : null;
         $responden      = IdentitasResponden::where('user_id',$user_id)->get()->first(); 
-        $responden_id   = (isset($responden->id))? $responden->id : null;
+        $responden_id   = ($responden->id ?? false)? $responden->id : null;
         $parameter      = array();
         $get_parameter  = Parameter::where('bagian','IV')->get();
         $KerangkaKerja  = KerangkaKerja::where('identitas_responden_id',$responden_id)->get();
@@ -32,7 +33,7 @@ class KerangkaKerjaController extends Controller
         $data = [
             'responden'     => $responden,
             'parameter'     => $parameter,
-            'hasil_evaluasi'=> HasilEvaluasi::kerangkaKerja($responden_id),
+            'hasil_evaluasi'=> $this->kerangkaKerja($responden_id),
             'skor'          => $skor
         ];
         return view('kerangka-kerja.index')->with($data);

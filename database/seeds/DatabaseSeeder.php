@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ParameterSeeder::class);
         $this->call(ParameterSkorSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(IdentityRespondenSeeder::class);
     }
 }
